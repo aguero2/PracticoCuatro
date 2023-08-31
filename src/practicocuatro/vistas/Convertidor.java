@@ -5,6 +5,8 @@
  */
 package practicocuatro.vistas;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ASUS-I5
@@ -49,6 +51,11 @@ public class Convertidor extends javax.swing.JFrame {
 
         jBConvertir.setForeground(new java.awt.Color(0, 0, 204));
         jBConvertir.setText("Covertir");
+        jBConvertir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBConvertirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -89,6 +96,21 @@ public class Convertidor extends javax.swing.JFrame {
     private void jTFTempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFTempActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFTempActionPerformed
+
+    private void jBConvertirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConvertirActionPerformed
+        // TODO add your handling code here:
+        try {
+            double temp = Double.parseDouble(jTFTemp.getText());
+            double tempF = temp * 9 / 5 + 32;
+            
+            String res = String.format("La temperatura en Fahrenheit es: %.2f°F", tempF);
+            JOptionPane.showMessageDialog(this, res);
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese un valor númerico válido");
+        }
+        jTFTemp.setText(" ");
+    }//GEN-LAST:event_jBConvertirActionPerformed
 
     /**
      * @param args the command line arguments
